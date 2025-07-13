@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    div {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #input {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    li {
+      background: #f8f9fa;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>TO DO APP</h1>
+    <input type="text" id="input" />
+    <button>ADD</button>
+    <ul id="add"></ul>
+  </div>
+  <script>
+    document.querySelector("button").addEventListener("click", () => {
+      let input = document.querySelector("#input").value.trim();
+      if (input === "") return;
+      let ul = document.querySelector("#add");
+      let li = document.createElement("li");
+      li.innerText = input;
+      
+      let delBtn = document.createElement("button");
+      delBtn.innerText = "Delete";
+      delBtn.className = "delete-btn";
+      delBtn.addEventListener("click", () => {
+        li.remove();
+      });
+
+      li.appendChild(delBtn);
+      ul.appendChild(li);
+      document.querySelector("#input").value = "";
+    });
+  </script>
+</body>
+</html>
